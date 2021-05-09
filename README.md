@@ -24,6 +24,7 @@
 | ------------------- | ------------- | -------------------------------|
 | user                | references    | null: false, foreign_key: true |
 | customer_token      | string        | null: false                    |
+| card_token          | string        | null: false                    |
 
 ### Association
 - belongs_to :user
