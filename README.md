@@ -15,8 +15,20 @@
 
 ### Association
 - has_one :customer_token
+- has_one :select_corse
 - has_many :restaurants
 - has_many :foods
+
+### select_corse テーブル
+
+| Column              | Type          | Options                        |
+| ------------------- | ------------- | -------------------------------|
+| user                | references    | null: false, foreign_key: true |
+| select_corse_id     | integer       | null: false                    |
+
+### Association
+-belongs_to :user
+-has_one :customer_token
 
 ### customer_token テーブル
 
@@ -28,6 +40,7 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :select_corse
 
 ### restaurants テーブル
 
