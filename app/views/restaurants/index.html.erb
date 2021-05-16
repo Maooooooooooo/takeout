@@ -12,10 +12,6 @@
     <p class='service-explain'>
       フリマアプリです
     </p>
-    <div class='store-btn'>
-      <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
-    </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
 
@@ -158,8 +154,6 @@
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
-        <%= link_to '#' do %>
-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
         <div class='item-info'>
           <h3 class='item-name'>
             商品を出品してね！
@@ -172,7 +166,6 @@
             </div>
           </div>
         </div>
-        <% end %>
       </li>
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>

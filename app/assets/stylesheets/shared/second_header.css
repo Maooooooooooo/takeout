@@ -4,7 +4,7 @@
   height: 130px;
   background-color: #faf0d3;
   display: flex;
-  align-restaurants: center;
+  align-items: center;
   justify-content: center;
 }
 

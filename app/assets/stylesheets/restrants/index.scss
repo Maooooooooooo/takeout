@@ -15,7 +15,7 @@ a {
   background-position: top center;
   display: flex;
   flex-direction: column;
-  align-restaurants: flex-start;
+  align-items: flex-start;
   justify-content: center;
   padding: 5vh 15vw;
   color: #fff;
@@ -81,7 +81,7 @@ a {
   width: 33vh;
   display: flex;
   flex-direction: column;
-  align-restaurants: center;
+  align-items: center;
   position: relative;
 }
 
@@ -130,7 +130,7 @@ a {
   background-position: top center;
   display: flex;
   flex-direction: column;
-  align-restaurants: flex-start;
+  align-items: flex-start;
   justify-content: center;
   padding: 5vh 15vw;
   color: #fff;
@@ -197,7 +197,7 @@ a {
   width: 33vh;
   display: flex;
   flex-direction: column;
-  align-restaurants: center;
+  align-items: center;
 }
 
 .feature-list-text {
@@ -219,7 +219,7 @@ a {
   background-color: #FFF;
   display: flex;
   flex-direction: column;
-  align-restaurants: center;
+  align-items: center;
   padding: 10vh 0;
 }
 
@@ -295,7 +295,7 @@ a {
 
 .star-btn {
   display: flex;
-  align-restaurants: center;
+  align-items: center;
 }
 
 .star-icon {

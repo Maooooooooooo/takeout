@@ -12,7 +12,7 @@
 .search-bar-contents {
   display: flex;
   justify-content: space-between;
-  align-restaurants: center;
+  align-items: center;
 }
 
 .furima-icon {
@@ -74,7 +74,7 @@
 .lists-right {
   display: flex;
   list-style: none;
-  align-restaurants: flex-end;
+  align-items: flex-end;
 }
 
 
@@ -87,6 +87,12 @@
 
 
 .logout {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #333333;
+}
+
+.card {
   text-decoration: none;
   color: #333333;
 }

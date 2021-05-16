@@ -94,28 +94,6 @@
   resize: none;
 }
 
-.select-corse-wrap {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.select-corse-wrap select {
-  width: 75px;
-  margin-top: 5px;
-  height: 45px;
-  padding-left: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.select-corse-wrap p {
-  line-height: 60px;
-  padding: 0 5px;
-}
-
 .field_with_errors {
   display: contents;
 }
@@ -153,8 +131,8 @@
 }
 
 .register-info {
-  margin: 30px 180px 0 0;
+  margin: 30px 250px 0 0;
   color: #0099e8;
   text-align: right;
   cursor: pointer;
-｝
+}

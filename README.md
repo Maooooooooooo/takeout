@@ -11,26 +11,13 @@
 | last_name          | string    | null: false              |
 | first_name_kana    | string    | null: false              |
 | last_name_kana     | string    | null: false              |
-| select_corse_id    | integer   | null: false              |
 
 ### Association
-- has_one :customer_token
-- has_one :select_corse
-- has_many :restaurants
+- has_one :card
+- has_many :restaurant
 - has_many :foods
 
-### select_corse テーブル
-
-| Column              | Type          | Options                        |
-| ------------------- | ------------- | -------------------------------|
-| user                | references    | null: false, foreign_key: true |
-| select_corse_id     | integer       | null: false                    |
-
-### Association
--belongs_to :user
--has_one :customer_token
-
-### customer_token テーブル
+### cards テーブル
 
 | Column              | Type          | Options                        |
 | ------------------- | ------------- | -------------------------------|
@@ -40,9 +27,8 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :select_corse
 
-### restaurants テーブル
+### restaurant テーブル
 
 | Column          | Type          | Options                        |
 | ----------------| ------------- | -------------------------------|
@@ -55,10 +41,10 @@
 | phone_number    | string        | null: false                    |
 
 ### Association
-- has_many :foods
+- has_many :menus
 - belongs_to :user
 
-### foods テーブル
+### menus テーブル
 
 | Column          | Type          | Options                        |
 | ----------------| ------------- | -------------------------------|
@@ -72,7 +58,7 @@
 ### Association
 - belongs_to :restaurant
 - belongs_to :user
-- has_many :purchase
+- has_many :purchases
 
 ### purchases テーブル
 
