@@ -16,4 +16,5 @@ class User < ApplicationRecord
     end
   end
   has_one :card
+  has_many :restaurants
 end

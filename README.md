@@ -53,11 +53,9 @@
 | ticket_count    | integer       | null: false                    |
 | price           | integer       | null: false                    |
 | restaurant      | references    | null: false, foreign_key:true  |
-| user            | references    | null: false, foreign_key:true  |
 
 ### Association
 - belongs_to :restaurant
-- belongs_to :user
 - has_many :purchases
 
 ### purchases テーブル

@@ -1,0 +1,34 @@
+class Admin::RestaurantsController < ApplicationController
+  before_action :if_not_admin
+
+  def index
+    @restaurants = Restaurant.all.order(created_at: :desc)
+  end
+
+  def new
+    @restaurant = Restaurant.new
+  end
+
+  def create
+    @restaurant = Restaurant.new(restaurant_params)
+    if @restaurant.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def show
+    @restaurant = Restaurant.find(params[:id])
+    @menus = Menu.find(params[:id])
+  end
+
+  private
+  def if_not_admin
+    redirect_to root_path unless current_user.admin?
+  end
+
+  def restaurant_params
+    params.require(:restaurant).permit(:restaurant_name,:area_id,:address,:genre_id,:opening_hours,:phone_number,:image).merge(user_id: current_user.id)
+  end
+end
