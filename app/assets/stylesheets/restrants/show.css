@@ -33,6 +33,19 @@
   object-fit: contain;
 }
 
+.menu-box-img{
+  width: 33vh;
+  height: 33vh;
+  border: 1px solid black;
+}
+
+.menu-contents {
+  background-color: #FFF;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 0;
+}
+
 .item-price-box {
   margin: 25px 0px;
   display: flex;
@@ -41,12 +54,24 @@
 }
 
 .item-price-box>.item-price {
-  font-size: 4vh;
+  font-size: 7vh;
   font-weight: bold;
 }
 
 .item-price-box>.item-postage {
   font-size: 16px;
+}
+
+.menu-show {
+  display: flex;
+  justify-content: space-around;
+  align-items: center
+}
+
+.menu-contents>.name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 

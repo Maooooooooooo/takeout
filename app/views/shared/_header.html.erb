@@ -19,7 +19,7 @@
         <li><%= link_to current_user.nickname, "#", class: "user-nickname" %> </li> 
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %> </li> 
         <li><%= link_to '出店する', new_admin_restaurant_path, method: :get, class: 'sell' %></li> 
-      <% elsif unless　current_user.admin? %> 
+      <% elsif user_signed_in? && current_user %> 
         <li><%= link_to current_user.nickname, "#", class: "user-nickname" %> </li> 
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %> </li> 
         <li><%= link_to 'クレジットカード登録',new_card_path,method: :get, class: "card" %></li>

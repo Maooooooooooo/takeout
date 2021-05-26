@@ -9,9 +9,9 @@ class Admin::MenusController < ApplicationController
   end
 
   def create
-    @menu = Menu.new(menus_params)
+    @menu = Menu.create(menus_params)
     if @menu.save
-      redirect_to   admin_restaurant_menus_path
+      redirect_to   restaurant_path(@menu.restaurant)
     else
       render :new
     end

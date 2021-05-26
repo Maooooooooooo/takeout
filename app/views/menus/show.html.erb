@@ -1,0 +1,20 @@
+<%# 商品の概要 %>
+<div class="menu-show">
+  <div class="menu-contents">
+    <h2 class="name">
+      <%= link_to @menu.food_name, restaurant_path %>
+    </h2>
+    <div class="item-img-content">
+      <%= image_tag @menu.image, class:"item-box-img" %>
+    </div>
+    <div class="item-price-box">
+      <span class="item-postage">
+        ¥ <%= @menu.price %>
+      </span>
+      <span class="item-postage">
+        <%= @menu.explanation %>
+      </span>
+      <%= link_to "購入する", "#", class: "item-red-btn" %>
+    </div>
+  </div>
+</div>

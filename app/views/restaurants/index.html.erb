@@ -129,12 +129,6 @@
           <div class='item-img-content'>
             <%= image_tag restaurant.image, class: "item-img" %>
 
-            <%# 商品が売れていればsold outを表示しましょう %>
-            <div class='sold-out'>
-              <span>Sold Out!!</span>
-            </div>
-            <%# //商品が売れていればsold outを表示しましょう %>
-
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
@@ -154,20 +148,22 @@
 
         <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
         <%# 商品がある場合は表示されないようにしましょう %>
-        <li class='list'>
-          <div class='item-info'>
-            <h3 class='item-name'>
-              商品を出品してね！
-            </h3>
-            <div class='item-price'>
-              <span>99999999円<br>(税込み)</span>
-              <div class='star-btn'>
-                <%= image_tag "star.png", class:"star-icon" %>
-                <span class='star-count'>0</span>
+        <% if @restaurants[0] == nil %>
+          <li class='list'>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                商品を出品してね！
+              </h3>
+              <div class='item-price'>
+                <span>99999999円<br>(税込み)</span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
+        <% end %>
         <%# //商品がある場合は表示されないようにしましょう %>
         <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <% end %>

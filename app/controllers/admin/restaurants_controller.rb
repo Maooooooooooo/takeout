@@ -20,7 +20,27 @@ class Admin::RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    @menus = Menu.find(params[:id])
+    @menu = Menu.new
+    @menus = @restaurant.menus.includes(:restaurant)
+  end
+
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def destroy
+    resetaurant = Restaurant.find(params[:id])
+    resetaurant.destroy
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.update(restaurant_params)
+    if @restaurant.save
+      redirect_to restaurant_path
+    else
+      render :edit
+    end
   end
 
   private

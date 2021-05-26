@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'restaurants#index'
   resources :cards, only: [:index,:new, :create]
   resources :restaurants, only: [:index, :show] do
-    resources :munus,only: [:index, :show]
+    resources :menus,only: [:index, :show]
   end
   namespace :admin do
     resources :restaurants do
