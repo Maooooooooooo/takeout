@@ -5,6 +5,7 @@ class MenusController < ApplicationController
   
   def show
     @menu = Menu.find(params[:id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   private

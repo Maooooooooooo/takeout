@@ -4,7 +4,7 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">店舗の情報を入力</h2>
-    <%= form_with model:@menu,url:admin_restaurant_menus_path,local: true do |f| %>
+    <%= form_with model:@menu,url:admin_restaurant_menu_path,local: true do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
     <%= render 'shared/error_messages', model: f.object %>
@@ -53,36 +53,13 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_area :explanation, class:"items-text", id:"explanation", placeholder:"商品説明", maxlength:"50" %>
+      </div>
+      <div class="sell-btn-contents">
+        <%= f.submit "更新する",class:"sell-btn" %>
+        <%=link_to 'もどる', restaurant_path, class:"back-btn" %>
+      </div>
+    <% end %>
     </div>
-  
-
-    <%# 注意書き %>
-    <div class="caution">
-      <p class="sentence">
-        こちらでの出品をもちまして
-        <a href="#">加盟店規約</a>
-        に同意したことになります。
-      </p>
-    </div>
-    <%# /注意書き %>
-    <%# 下部ボタン %>
-    <div class="sell-btn-contents">
-      <%= f.submit "出品する",class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
-    </div>
-    <%# /下部ボタン %>
   </div>
-  <% end %>
-
-  <footer class="items-sell-footer">
-    <ul class="menu">
-      <li><a href="#">プライバシーポリシー</a></li>
-      <li><a href="#">フリマ利用規約</a></li>
-      <li><a href="#">特定商取引に関する表記</a></li>
-    </ul>
-    <%= link_to image_tag('takeout-logo.png' , size: '185x50'), "/" %>
-    <p class="inc">
-      ©︎Furima,Inc.
-    </p>
-  </footer>
 </div>
+  

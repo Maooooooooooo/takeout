@@ -50,7 +50,6 @@
 | ----------------| ------------- | -------------------------------|
 | food_name       | string        | null: false                    |
 | explanation     | text          | null: false                    |
-| ticket_count    | integer       | null: false                    |
 | price           | integer       | null: false                    |
 | restaurant      | references    | null: false, foreign_key:true  |
 
