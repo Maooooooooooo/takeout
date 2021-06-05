@@ -1,0 +1,59 @@
+<%= render "shared/second-header"%>
+
+
+<div class='transaction-contents'>
+  <div class='transaction-main'>
+    <h1 class='transaction-title-text'>
+      購入内容の確認
+    </h1>
+    <%# 購入内容の表示 %>
+    <div class='buy-item-info'>
+      <%= image_tag @purchase.image, class: 'buy-item-img' %>
+      <div class='buy-item-right-content'>
+        <h2 class='buy-item-text'>
+          <%= @purchase.food_name %>
+        </h2>
+        <div class='buy-item-price'>
+          <p class='item-price-text'>¥ <%= @purchase.price %></p>
+        </div>
+      </div>
+    </div>
+    <%# /購入内容の表示 %>
+
+    <%# 支払額の表示 %>
+    <div class='item-payment'>
+      <h1 class='item-payment-title'>
+        支払金額
+      </h1>
+      <p class='item-payment-price'>
+        ¥ <%= @purchase.price %>
+      </p>
+    </div>
+    <%# /支払額の表示 %>
+
+  <%= form_with model:@purchase_form,url: restaurant_menu_purchases_path,id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+
+    <%# カード情報の入力 %>
+    <h1 class='info-input-haedline'>
+      クレジットカード情報
+    </h1>
+    <div class='available-card'>
+      <%= image_tag "#{@card_src}", class: 'card-logo'%>
+    </div>
+    <div class = 'credit-card-info-numbers'>
+      <%= "**** **** **** " + @card[:last4] %>
+      <br>
+      有効期限
+      <br>
+      <%= @card[:exp_month] %>
+      <%# 有効期限の「月」を取得 %>
+      /
+      <%= @card[:exp_year] %>
+      <%# 有効期限の「年」を取得 %> 
+    </div>
+    <div class='item-buy-box'>
+      <%= f.submit "購入" ,class:"item-red-btn" %>
+    </div>
+  <% end %>
+</div>
+<%= render "shared/second-footer"%>

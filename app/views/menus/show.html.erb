@@ -18,8 +18,10 @@
         <% if current_user.admin? %>
           <%= link_to "編集する", edit_admin_restaurant_menu_path, class: "item-red-btn" %>
           <%= link_to "削除する", admin_restaurant_menu_path,method: :delete, class: "item-red-btn" %>
+        <% elsif @card.present? %>
+          <%= link_to "クレジットカード登録をする", new_card_path, class: "item-red-btn" %>
         <% else %>
-          <%= link_to "購入する", "#", class: "item-red-btn" %>
+          <%= link_to "購入確認画面へ移動", restaurant_menu_purchases_path(@restaurant.id,@menu.id), class: "item-red-btn" %>
         <% end %>
       <% end %>
     </div>

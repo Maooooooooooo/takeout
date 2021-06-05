@@ -62,14 +62,14 @@
 | Column          | Type          | Options                        |
 | ----------------| ------------- | -------------------------------|
 | user            | references    | null: false, foreign_key:true  |
-| food            | references    | null: false, foreign_key: true |
+| menu            | references    | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- belongs_to :food
-- has_one :order
+- belongs_to :menu
+- has_one :pay
 
-### orders テーブル
+### pays テーブル
 
 | Column          | Type          | Options                        |
 | ----------------| ------------- | -------------------------------|
