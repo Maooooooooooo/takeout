@@ -14,10 +14,10 @@
 
 ### Association
 - has_one :card
-- has_many :restaurant
+- has_many :restaurants
 - has_many :purchases
 
-### customer_token テーブル
+### cards テーブル
 
 | Column              | Type          | Options                        |
 | ------------------- | ------------- | -------------------------------|
@@ -71,7 +71,7 @@
 - belongs_to :menu
 - has_many :pays
 
-### orders テーブル
+### pays テーブル
 
 | Column          | Type          | Options                        |
 | ----------------| ------------- | -------------------------------|
