@@ -14,9 +14,15 @@
 | select_corse_id    | integer   | null: false              |
 
 ### Association
+<<<<<<< Updated upstream
 - has_one :customer_token
 - has_many :restaurants
 - has_many :foods
+=======
+- has_one :card
+- has_many :restaurant
+- has_many :purchases
+>>>>>>> Stashed changes
 
 ### customer_token テーブル
 
@@ -39,6 +45,8 @@
 | genre_id        | integer       | null: false                    |
 | opening_hours   | integer       | null: false                    |
 | phone_number    | string        | null: false                    |
+| order_time_id   | integer       | null: false                    |
+| image           | ActiveStorage | null: false                    |
 
 ### Association
 - has_many :foods
@@ -53,7 +61,11 @@
 | ticket_count    | integer       | null: false                    |
 | price           | integer       | null: false                    |
 | restaurant      | references    | null: false, foreign_key:true  |
+<<<<<<< Updated upstream
 | user            | references    | null: false, foreign_key:true  |
+=======
+| image           | ActiveStorage | null: false                    |
+>>>>>>> Stashed changes
 
 ### Association
 - belongs_to :restaurant
@@ -69,8 +81,13 @@
 
 ### Association
 - belongs_to :user
+<<<<<<< Updated upstream
 - belongs_to :food
 - has_one :order
+=======
+- belongs_to :menu
+- has_many :pays
+>>>>>>> Stashed changes
 
 ### orders テーブル
 
@@ -78,7 +95,6 @@
 | ----------------| ------------- | -------------------------------|
 | purchase        | references    | null: false, foreign_key:true  |
 | phone_number    | string        | null: false                    |
-| order_time_id   | integer       | null: false                    |
 
 ### Association
 - belongs_to :purchase
