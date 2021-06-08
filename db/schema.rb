@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_02_135930) do
+ActiveRecord::Schema.define(version: 2021_06_07_045611) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 2021_06_02_135930) do
   create_table "pays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "purchase_id"
     t.string "phone_number", null: false
-    t.integer "order_time_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["purchase_id"], name: "index_pays_on_purchase_id"
@@ -66,8 +65,6 @@ ActiveRecord::Schema.define(version: 2021_06_02_135930) do
     t.bigint "menu_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "card_id", null: false
-    t.index ["card_id"], name: "index_purchases_on_card_id"
     t.index ["menu_id"], name: "index_purchases_on_menu_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
@@ -82,6 +79,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_135930) do
     t.string "phone_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "order_time_id"
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 
@@ -107,7 +105,6 @@ ActiveRecord::Schema.define(version: 2021_06_02_135930) do
   add_foreign_key "cards", "users"
   add_foreign_key "menus", "restaurants"
   add_foreign_key "pays", "purchases"
-  add_foreign_key "purchases", "cards"
   add_foreign_key "purchases", "menus"
   add_foreign_key "purchases", "users"
   add_foreign_key "restaurants", "users"

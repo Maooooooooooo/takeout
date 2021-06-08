@@ -3,7 +3,6 @@ const pay = () => {
   const form = document.getElementById("charge-form"); 
   form.addEventListener("submit", (e) => { // イベント発火
     e.preventDefault();
-    console.log("フォーム送信時にイベント発火")
 
     // カード情報の取得先
     const formResult = document.getElementById("charge-form");
@@ -13,10 +12,13 @@ const pay = () => {
       number: formData.get("card[number]"),              // カード番号
       cvc: formData.get("card[cvc]"),                    // カード裏面の3桁の数字
       exp_month: formData.get("card[exp_month]"),        // 有効期限の月
-      exp_year: `20${formData.get("card[exp_year]")}`,   // 有効期限の年
+      exp_year: formData.get("card[exp_year]"),   // 有効期限の年
     };
+    
+   
 
     Payjp.createToken(card, (status, response) => {
+      console.log(card)
       if (status === 200) {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");   //idを元に要素を取得

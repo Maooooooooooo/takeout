@@ -1,5 +1,6 @@
 class Menu < ApplicationRecord
   belongs_to :restaurant
+  has_many :purchases
   has_one_attached :image
 
   with_options presence: true do

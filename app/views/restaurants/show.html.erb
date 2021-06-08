@@ -47,6 +47,10 @@
           <th class="detail-item">電話番号</th>
           <td class="detail-value"><%= @restaurant.phone_number %></td>
         </tr>
+        <tr>
+          <th class="detail-item">待ち時間</th>
+          <td class="detail-value"><%= @restaurant.order_time.name %></td>
+        </tr>
       </tbody>
     </table>
   </div>

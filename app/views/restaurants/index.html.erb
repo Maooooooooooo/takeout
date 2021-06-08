@@ -134,12 +134,8 @@
             <h3 class='item-name'>
               <%= restaurant.restaurant_name %>
             </h3>
-            <div class='item-price'>
-              <span><%= restaurant.area.name %><br><%= restaurant.genre.name %></span>
-              <div class='star-btn'>
-                <%= image_tag "star.png", class:"star-icon" %>
-                <span class='star-count'>0</span>
-              </div>
+            <div class='item-detail'>
+              <span><%= restaurant.area.name %><br><%= restaurant.genre.name %><br>待ち時間　<%= restaurant.order_time.name %></span>
             </div>
           </div>
           <% end %>

@@ -2,6 +2,7 @@ class Restaurant < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :area
   belongs_to :genre
+  belongs_to :order_time
   belongs_to :user
   has_one_attached :image
   has_many :menus,dependent: :destroy
@@ -17,5 +18,6 @@ class Restaurant < ApplicationRecord
   with_options numericality: { other_than: 1} do
     validates :area_id
     validates :genre_id
+    validates :order_time_id
   end
 end

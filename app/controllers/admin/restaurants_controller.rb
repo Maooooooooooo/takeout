@@ -49,6 +49,6 @@ class Admin::RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:restaurant_name,:area_id,:address,:genre_id,:opening_hours,:phone_number,:image).merge(user_id: current_user.id)
+    params.require(:restaurant).permit(:restaurant_name,:area_id,:address,:genre_id,:opening_hours,:phone_number,:image,:order_time_id).merge(user_id: current_user.id)
   end
 end

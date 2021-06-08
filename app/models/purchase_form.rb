@@ -2,18 +2,17 @@ class PurchaseForm
   include ActiveModel::Model
 
 
-  attr_accessor :user_id, :menu_id, :phone_number, :oeder_time_id, :card_id
+  attr_accessor :user_id, :menu_id, :phone_number,:token
   with_options presence: true do
     validates :user_id
     validates :menu_id
-    validates :oeder_time_id,numericality: { other_than: 1}
-    validates :phone_number,format: { with: /\A\d{10,11}\z/ }
-    validates :card_id
+    validates :phone_number,format: { with: /\A0(\d{1}[-(]?\d{4}|\d{2}[-(]?\d{3}|\d{3}[-(]?\d{2}|\d{4}[-(]?\d{1})[-)]?\d{4}\z|\A0[5789]0[-]?\d{4}[-]?\d{4}\z/ }
+    validates :token
   end
 
 
   def save
-    purchase = Purchase.create(user_id: user_id,menu_id: menu_id,card_id: card_id)
-    Pay.create(purchase_id: purchase.id,oeder_time_id: oeder_time_id,phone_number: phone_number)
+    purchase = Purchase.create(user_id: user_id,menu_id: menu_id)
+    Pay.create(purchase_id: purchase.id,phone_number: phone_number)
   end
 end

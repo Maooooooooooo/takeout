@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
+
   def index
     @purchase = Menu.find(params[:menu_id])
     @purchase_form = PurchaseForm.new
@@ -14,7 +15,7 @@ class PurchasesController < ApplicationController
     case @card_brand
     when "Visa"
       # 例えば、Pay.jpからとってきたカード情報の、ブランドが"Visa"だった場合は返り値として
-      # (画像として登録されている)Visa.pngを返す
+      # (画像として登録されている)card-visa.pngを返す
       @card_src = "card-visa.gif"
     when "JCB"
       @card_src = "card-jcb.gif"
@@ -27,33 +28,23 @@ class PurchasesController < ApplicationController
 
 
   def create
-    customer_card = customer.cards.retrieve(card.card_token)
-    ##カードのアイコン表示のための定義づけ
-    @card = customer.cards.first
-    
-    @card_brand = @customer_card.brand
-    case @card_brand
-    when "Visa"
-      # 例えば、Pay.jpからとってきたカード情報の、ブランドが"Visa"だった場合は返り値として
-      # (画像として登録されている)Visa.pngを返す
-      @card_src = "card-visa.gif"
-    when "JCB"
-      @card_src = "card-jcb.gif"
-    when "MasterCard"
-      @card_src = "card-mastercard.png"
-    when "American Express"
-      @card_src = "card-amex.gif"
-    end
-    # viewの記述を簡略化
-    ## 有効期限'月'を定義
-    @exp_month = @customer_card.exp_month.to_s
-    ## 有効期限'年'を定義
-    @exp_year = @customer_card.exp_year.to_s.slice(2,3)
+    redirect_to new_card_path and return unless card.present?
+    @purchase = Menu.find(params[:menu_id])
+    @purchase_form = PurchaseForm.new(set_params)
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 環境変数を読み込む
+    customer_token = current_user.card.customer_token # ログインしているユーザーの顧客トークンを定義
+    Payjp::Charge.create(
+      amount: @purchase.price, # 商品の値段
+      customer: customer_token, # 顧客のトークン
+      currency: 'jpy' # 通貨の種類（日本円）
+    )
+    @purchase_form.save
+    redirect_to root_path
   end
 
 
   private
   def set_params
-    params.require(:purchase_form).permit(:phone_number, :order_time_id).merge(user_id:current_user.id,card_id:params[:card_id],menu_id:params[:menu_id])
+    params.require(:purchase_form).permit(:phone_number).merge(user_id:current_user.id,menu_id:params[:menu_id],token:params[:token])
   end
 end
