@@ -11,18 +11,11 @@
 | last_name          | string    | null: false              |
 | first_name_kana    | string    | null: false              |
 | last_name_kana     | string    | null: false              |
-| select_corse_id    | integer   | null: false              |
 
 ### Association
-<<<<<<< Updated upstream
-- has_one :customer_token
-- has_many :restaurants
-- has_many :foods
-=======
 - has_one :card
 - has_many :restaurant
 - has_many :purchases
->>>>>>> Stashed changes
 
 ### customer_token テーブル
 
@@ -49,45 +42,34 @@
 | image           | ActiveStorage | null: false                    |
 
 ### Association
-- has_many :foods
+- has_many :menus
 - belongs_to :user
 
-### foods テーブル
+### menus テーブル
 
 | Column          | Type          | Options                        |
 | ----------------| ------------- | -------------------------------|
 | food_name       | string        | null: false                    |
 | explanation     | text          | null: false                    |
-| ticket_count    | integer       | null: false                    |
 | price           | integer       | null: false                    |
 | restaurant      | references    | null: false, foreign_key:true  |
-<<<<<<< Updated upstream
-| user            | references    | null: false, foreign_key:true  |
-=======
 | image           | ActiveStorage | null: false                    |
->>>>>>> Stashed changes
 
 ### Association
 - belongs_to :restaurant
-- belongs_to :user
-- has_many :purchase
+- has_many :purchases
 
 ### purchases テーブル
 
 | Column          | Type          | Options                        |
 | ----------------| ------------- | -------------------------------|
 | user            | references    | null: false, foreign_key:true  |
-| food            | references    | null: false, foreign_key: true |
+| menu            | references    | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-<<<<<<< Updated upstream
-- belongs_to :food
-- has_one :order
-=======
 - belongs_to :menu
 - has_many :pays
->>>>>>> Stashed changes
 
 ### orders テーブル
 
