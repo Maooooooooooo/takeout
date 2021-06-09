@@ -1,0 +1,101 @@
+<%= render "shared/header" %>
+
+<%# 商品の概要 %>
+<div class="item-show">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @restaurant.restaurant_name %>
+    </h2>
+    <div class="item-img-content">
+      <%= image_tag @restaurant.image ,class:"item-box-img" %>
+    </div>
+    <div class="item-price-box">
+      <span class="item-postage">
+        <%= @restaurant.area.name %>
+      </span>
+      <span class="item-postage">
+        <%= @restaurant.genre.name %>
+      </span>
+    </div>
+
+    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+    <% if user_signed_in? && current_user.admin? %>
+      <%= link_to "店舗情報の編集", edit_admin_restaurant_path, method: :get, class: "item-red-btn" %>
+      <p class="or-text">or</p>
+      <%= link_to "削除", admin_restaurant_path, method: :delete, class:"item-destroy" %>
+    <% end %>
+    <%# 商品が売れていない場合はこちらを表示しましょう %>
+    <%# //商品が売れていない場合はこちらを表示しましょう %>
+
+
+    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+
+    <div class="item-explain-box">
+      <span><%= "店舗詳細" %></span>
+    </div>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">住所</th>
+          <td class="detail-value"><%= @restaurant.address %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">営業時間</th>
+          <td class="detail-value"><%= @restaurant.opening_hours %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">電話番号</th>
+          <td class="detail-value"><%= @restaurant.phone_number %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">待ち時間</th>
+          <td class="detail-value"><%= @restaurant.order_time.name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="menu-show">
+  <div class="menu-contents">
+    <span>メニュー名をクリックして購入画面に進みます。</span>
+    <% @menus.each do |menu,restaurant| %>
+      <h2 class="name">
+        <%= link_to menu.food_name,restaurant_menu_path(@restaurant,menu.id),method: :get %>
+      </h2>
+      <div class="item-img-content">
+        <%= image_tag menu.image, class:"menu-box-img" %>
+      </div>
+      <div class="item-price-box">
+        <span class="item-postage">
+          ¥ <%= menu.price %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="item-show">
+  <div class="item-box">
+    <% if user_signed_in? && current_user.admin? %>
+      <%= link_to "メニューを作成する", new_admin_restaurant_menu_path(@restaurant.id), method: :get, class: "item-red-btn" %>
+    <% end %>
+    
+
+      <%# /商品の概要 %>
+
+    <div class="links">
+      <a href="#" class="change-item-btn">
+        ＜ 前の商品
+      </a>
+      <a href="#" class="change-item-btn">
+        後ろの商品 ＞
+      </a>
+    </div>
+    <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+    <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
+    <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

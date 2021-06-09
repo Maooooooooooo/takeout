@@ -1,0 +1,115 @@
+<div class="items-sell-contents">
+  <header class="items-sell-header">
+    <%= link_to image_tag('takeout-logo.png' , size: '185x50'), "/" %>
+
+  </header>
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">店舗の情報を入力</h2>
+    <%= form_with model:@restaurant,url:admin_restaurant_path,local: true do |f| %>
+
+    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%= render 'shared/error_messages', model: f.object %>
+    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+
+    <%# 出品画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        店舗画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# /店舗画像 %>
+    <%# 店舗名 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        店舗名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :restaurant_name, class:"items-text", id:"item-name", placeholder:"店舗名（必須)", maxlength:"40" %>
+    </div>
+    <%# /店舗名 %>
+
+    <%# 店舗の詳細 %>
+    <div class="items-detail">
+      <div class="weight-bold-text">店舗の詳細</div>
+      <div class="form">
+        <div class="weight-bold-text">
+          ジャンル
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box"}) %>
+        <div class="weight-bold-text">
+          エリア
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box"}) %>
+        <div class="weight-bold-text">
+          待ち時間
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:order_time_id, OrderTime.all, :id, :name, {}, {class:"select-box"}) %> 
+      </div>
+    </div>
+    <%# /商品の詳細 %>
+
+    <%# 店舗情報 %>
+    <div class="items-detail">
+      <div class="weight-bold-text question-text">
+        <span>住所をご記入ください。</span>
+      </div>
+      <div class="form">
+        <div class="weight-bold-text">
+          住所
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :address, class:"items-text", id:"address", placeholder:"神泉1-1-1　テイクアウトビル101", maxlength:"50" %>
+        <div class="weight-bold-text">
+          営業時間(半角）
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :opening_hours, class:"opening-hours-input", placeholder:"11:00~23:00" %>
+        <div class="weight-bold-text">
+          電話番号(半角ハイフン有り）
+          <span class="indispensable">必須</span><span>　※携帯・固定どちらでも可能です。</span>
+        </div>
+        <%= f.text_field :phone_number, class:"phone-number-input",  placeholder:"000-1111-2222" %>
+      </div>
+    </div>
+    <%# /店舗情報 %>
+
+    <%# 注意書き %>
+    <div class="caution">
+      <p class="sentence">
+        こちらでの出店をもちまして
+        <a href="#">加盟店規約</a>
+        に同意したことになります。
+      </p>
+    </div>
+    <%# /注意書き %>
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "更新する",class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+
+  <footer class="items-sell-footer">
+    <ul class="menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">フリマ利用規約</a></li>
+      <li><a href="#">特定商取引に関する表記</a></li>
+    </ul>
+    <%= link_to image_tag('takeout-logo.png' , size: '185x50'), "/" %>
+    <p class="inc">
+      ©︎Furima,Inc.
+    </p>
+  </footer>
+</div>

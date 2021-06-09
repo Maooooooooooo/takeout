@@ -1,0 +1,65 @@
+<div class="items-sell-contents">
+  <header class="items-sell-header">
+    <%= link_to image_tag('takeout-logo.png' , size: '185x50'), "/" %>
+  </header>
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">店舗の情報を入力</h2>
+    <%= form_with model:@menu,url:admin_restaurant_menu_path,local: true do |f| %>
+
+    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%= render 'shared/error_messages', model: f.object %>
+    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+
+    <%# メニュー画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        メニュー画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# /メニュー画像 %>
+    <%# メニュー名 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        メニュー名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :food_name, class:"items-text", id:"item-name", placeholder:"メニュー名（必須)", maxlength:"40" %>
+    </div>
+    <%# /メニュー名 %>
+
+    <%# メニュー詳細 %>
+    <div class="items-detail">
+      <div class="weight-bold-text question-text">
+        <span>メニュー詳細</span>
+      </div>
+      <div class="form">
+        <div class="price-content">
+          <div class="price-text">
+            <span>価格</span>
+            <span class="indispensable">必須</span>
+          </div>
+          <span class="sell-yen">¥</span>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）680" %>
+        </div>
+        <div class="weight-bold-text">
+          商品説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :explanation, class:"items-text", id:"explanation", placeholder:"商品説明", maxlength:"50" %>
+      </div>
+      <div class="sell-btn-contents">
+        <%= f.submit "更新する",class:"sell-btn" %>
+        <%=link_to 'もどる', restaurant_path, class:"back-btn" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+  

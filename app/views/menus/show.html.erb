@@ -1,0 +1,29 @@
+<%# 商品の概要 %>
+<div class="menu-show">
+  <div class="menu-contents">
+    <h2 class="name">
+      <%= link_to @menu.food_name, restaurant_path(@restaurant.id) %>
+    </h2>
+    <div class="item-img-content">
+      <%= image_tag @menu.image, class:"item-box-img" %>
+    </div>
+    <div class="item-price-box">
+      <span class="item-postage">
+        ¥ <%= @menu.price %>
+      </span>
+      <span class="item-postage">
+        <%= @menu.explanation %>
+      </span>
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
+          <%= link_to "編集する", edit_admin_restaurant_menu_path, class: "item-red-btn" %>
+          <%= link_to "削除する", admin_restaurant_menu_path,method: :delete, class: "item-red-btn" %>
+        <% elsif @card.present? %>
+          <%= link_to "クレジットカード登録をする", new_card_path, class: "item-red-btn" %>
+        <% else %>
+          <%= link_to "購入確認画面へ移動", restaurant_menu_purchases_path(@restaurant.id,@menu.id), class: "item-red-btn" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
