@@ -14,8 +14,8 @@
 
 ### Association
 - has_one :card
-- has_many :restaurant
-- has_many :foods
+- has_many :restaurants
+- has_many :purchases
 
 ### cards テーブル
 
@@ -23,12 +23,11 @@
 | ------------------- | ------------- | -------------------------------|
 | user                | references    | null: false, foreign_key: true |
 | customer_token      | string        | null: false                    |
-| card_token          | string        | null: false                    |
 
 ### Association
 - belongs_to :user
 
-### restaurant テーブル
+### restaurants テーブル
 
 | Column          | Type          | Options                        |
 | ----------------| ------------- | -------------------------------|
@@ -39,6 +38,8 @@
 | genre_id        | integer       | null: false                    |
 | opening_hours   | integer       | null: false                    |
 | phone_number    | string        | null: false                    |
+| order_time_id   | integer       | null: false                    |
+| image           | ActiveStorage | null: false                    |
 
 ### Association
 - has_many :menus
@@ -52,6 +53,7 @@
 | explanation     | text          | null: false                    |
 | price           | integer       | null: false                    |
 | restaurant      | references    | null: false, foreign_key:true  |
+| image           | ActiveStorage | null: false                    |
 
 ### Association
 - belongs_to :restaurant
@@ -67,7 +69,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :menu
-- has_one :pay
+- has_many :pays
 
 ### pays テーブル
 
@@ -75,7 +77,6 @@
 | ----------------| ------------- | -------------------------------|
 | purchase        | references    | null: false, foreign_key:true  |
 | phone_number    | string        | null: false                    |
-| order_time_id   | integer       | null: false                    |
 
 ### Association
 - belongs_to :purchase
